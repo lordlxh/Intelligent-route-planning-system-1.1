@@ -1,0 +1,58 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/login.css' %}" rel="stylesheet"/>
+    <title>用户注册</title>
+  </head>
+  <style>
+    .register{
+    color:rgb(196, 30, 30);
+    font-size: 20px;
+}
+  </style>
+  <body>
+    <div class="container">
+            <div class="col">
+              <form class="form-login" action="/users/register/" method="post">
+                  <h3 class="text-center">欢迎注册</h3>
+                  <div class="form-group">
+                    <label for="id_username">请输入用户名</label>
+                    <input type="text" name='username' class="form-control" id="id_username"  placeholder="用户名长度不超过10位" autofocus required>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_password">请输入密码：</label>
+                    <input type="password" name='password' class="form-control" id="id_password" placeholder="密码长度不超过15位" required >
+                  </div>
+                  <div class="form-group">
+                    <label for="id_password">请确认密码：</label>
+                    <input type="password" name='again_password' class="form-control" id="id_password"  required>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_password">请选择用户类型（选填）：</label><br>
+                    <input type="radio" name="type" value="0" >大学生
+                      <input type="radio" name="type" value="1">上班族<br>
+                  </div>
+                   <div class="form-group">
+                    <label for="id_password">是否拥有驾照（选填）：</label><br>
+                    <input type="radio" name="driving_license" value="1" >是
+                      <input type="radio" name="driving_license" value="0">否<br>
+                  </div>
+
+                  <div>
+                  <a href="/users/login" class="register" >已有账号？直接登录！</a>
+                  <button type="submit" class="btn btn-primary float-right">一键注册</button>
+                  </div>
+              </form>
+            </div>
+    </div> <!-- /container -->
+  </body>
+{% if username_length_flag %}<script>window.alert("用户名过长，请重试")</script>{% endif %}
+{% if password_length_flag %}<script>window.alert("密码过长，请重试")</script>{% endif %}
+{% if password_repeat_flag %}<script>window.alert("密码输入不一致，请重试")</script>{% endif %}
+{% if repeat_username_flag %}<script>window.alert("用户名已被注册，请重试")</script>{% endif %}
+</html>

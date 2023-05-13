@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="Zh">
+    <head>
+        <!--====== Required meta tags ======-->
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="Pragma" content="no-cache" />
+        <!--====== Title ======-->
+        <title>{{name}}</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: burlywood;
+        }
+        .signform {
+            font-family: 微软雅黑;
+            position: fixed;
+            background-color:lightblue;
+            top: 20%;
+            left: 30%;
+            width: 500px;
+            height: 400px;
+            border-radius: 1em;
+            text-align: center;
+            z-index: 999;
+        }
+        #registerform {
+            height: 450px;
+        }
+        .signclose {
+            cursor: pointer;
+            float: right;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+            height: 35px;
+            width: 35px;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        #registerloading{
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            left: 410px;
+            top: 90px;
+        }
+        .signinput {
+            border-radius: 0.2em;
+            width: 280px;
+            height: 200px;
+            border: none;
+            background-color:#f2f2f2;
+            font-size: 14px;
+        }
+        .userdiv {
+            position: relative;
+            margin-top: 80px;
+        }
+        .pwddiv {
+            position: relative;
+            margin-top: 20px;
+        }
+        .postdiv {
+            position: relative;
+            margin-top: 20px;
+        }
+        .postdiv input {
+            cursor: pointer;
+            color: white;
+            font-size: 26px;
+            border: none;
+            border-radius: 0.4em;
+            width: 280px;
+            height: 45px;
+            background-color:#4CAF50;
+        }
+        #tu img{
+            max-width: 100%;
+            max-height:100%;
+            width:auto;
+            height: auto;
+        }
+        #title div{
+            font-size: 26px;
+            font-family: "宋体";
+            color: black;
+        }
+
+    </style>
+      <!--====== Favicon Icon ======-->
+        <link rel="stylesheet" type="text/css" href="/static/css/ourself.css">
+
+        <link rel="shortcut icon" href="/static/images/logo/logo-1.png" type="image/png">
+        <!--====== Bootstrap css ======-->
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <!--====== Fontawesome css ======-->
+        <link rel="stylesheet" href="/static/fonts/fontawesome/css/all.min.css">
+        <!--====== Fontawesome css ======-->
+        <link rel="stylesheet" href="/static/fonts/flaticon/flaticon.css">
+        <!--====== Magnific Popup css ======-->
+        <link rel="stylesheet" href="/static/css/magnific-popup.css">
+        <!--====== Slick css ======-->
+        <link rel="stylesheet" href="/static/css/slick.css">
+        <!--====== Default css ======-->
+        <link rel="stylesheet" href="/static/css/default.css">
+        <!--====== Style css ======-->
+        <link rel="stylesheet" href="/static/css/style.css"> 
+
+        
+    </head>
+    <body>
+        <!--====== Start Header ======-->
+        <div class="preloader">
+            <div class="lds-ellipsis">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!--====== End Header ======-->
+        <!--====== Search From ======-->
+        <div class="modal fade" id="search-modal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <form>
+                        <div class="form_group">
+                            <input type="text" class="form_control" placeholder="Search here...">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!--====== Search From ======-->
+        <!--====== Start Header ======-->
+        <header class="header-area header-area-v1" style="background-color:#1b3255" >
+
+            <div class="header-navigation" >
+                <div class="container" >
+                    <div class="nav-container d-flex align-items-center justify-content-between">
+                        <!-- site logo -->
+
+                        <div class="nav-menu">
+                            <!-- Navbar Close Icon -->
+                            <div class="navbar-close">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <!-- nav-menu -->
+                            <nav class="main-menu">
+                                <ul>
+                                    <li class="menu-item" ><a href="/users/home/"style="color: #FFFFFF">主页</a></li>
+
+                                    <li class="menu-item"><a href="/users/spot_recommendation_input/"style="color: #FFFFFF">推荐线路</a>
+                                    </li>         
+                                    <li class="menu-item menu-item-has-children"><a style="color: #FFFFFF">登录</a>
+                                            <ul class="sub-menu">
+                                            <li><a href="/users/login/" style="color:black">登录</a></li>
+                                            <li><a href="/users/register/" style="color:black">注册</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item"><a href="contact.html"style="color: #FFFFFF">讨论区</a></li>
+                                </ul>
+                            </nav>
+                            <!-- nav pushed item -->
+                            <div class="nav-pushed-item">
+                                <div class="navbar-btn">
+                                    <a href="contact.html" class="main-btn">Get A Quote</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- nav push item -->
+                        <div class="nav-push-item">
+                            <div class="navbar-btn">
+                                <li class="menu-item"><a href="contact.html"style="color: #FFFFFF">欢迎您，{{pid}}</a></li>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </header>
+   	<div style="padding-top:45px;height:1000px;background-color:#F6F6F6;">
+		<div style="display:inline;width:12%;float:left;color:white;height:100%">&nbsp</div>
+        <div class="mainbody">
+            <div class="body2-1">
+                <div>
+                    <div class="body2-1-front" onclick="index();">景点概述</div>
+                    <div class="body2-1-front" onclick="persce();">上一景点</div>
+                    <div class="body2-1-front" onclick="nextsce();">下一景点</div>
+                
+                
+                        <div class="chart"><p>门票价格：</p>
+                        <div id="line" style="width:650px;height:400px">
+
+        </div>
+        </div>
+        <div >景点概况：</div>
+{{main|safe}}
+                
+                
+        <!--                                             important div             !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1-->
+    </div>
+    <div>
+                <ul class="body2-2">
+                    <div id="tu" style="width:600px;height:300px;float:left">   
+        <img src="/static/images/scenic spot/{{name}}.jpg" alt="">
+        </div>
+           <div id="link" style="width:600px;height:300px;float:left">   
+       <a href="{{cloudlink|safe}}">{{cloud}}</a>
+        </div>
+                </ul>
+               </div> 
+            </div>
+            </div>
+      <footer class="footer-area">
+            <div class="footer-top pt-40 pb-40">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4">
+                            <div class="brand-logo">
+                              
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="social-box">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-skype"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-widget-area pt-110 pb-110">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="widget contact-info-widget">
+                                
+                                <div class="info-box">
+                                    <h5 class="mb-20">所在地址</h5>
+                                    <p><i class="fas fa-map-marker-alt"></i>上海市 奉贤区<br>海思路999号</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="widget opening-hours-widget">
+                                <h4 class="widget-title">工作时间</h4>
+                                <div class="info-box">
+                                    <p>周一- 周五</p>
+                                    <p>10:00 AM - 6:00 PM</p>
+                                </div>
+                                <div class="info-box">
+                                    <p>Monday - Friday</p>
+                                    <p>10:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="widget newsletters-widget">
+                                <h4 class="widget-title">加入我们</h4>
+                                <p>欢迎加入我们智能路线规划及其可视化团队 请留下您宝贵的邮箱以便我们联系您</p>
+                                <form class="newsletters-form">
+                                    <div class="form_group">
+                                        <input type="text" class="form_control" placeholder="Enter Your Email" name="email" required>
+                                        <button class="icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bootom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="copyright-text">
+                                <p>版权所有©华东理工大学<a target="_blank" href="https://www.ecust.edu.cn/">华东理工大学官网</a></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </footer><!--====== End Footer ======-->
+        <!--====== back-to-top ======-->
+        <a href="#" class="back-to-top" ><i class="fas fa-angle-up"></i></a>
+        <!--====== Jquery js ======-->
+        <script src="/static/js/tem/vendor/modernizr-3.6.0.min.js"></script>
+        <script src="/static/js/tem/vendor/jquery-1.12.4.min.js"></script>
+        <!--====== Bootstrap js ======-->
+        <script src="/static/js/tem/bootstrap.min.js"></script>
+        <script src="/static/js/tem/popper.min.js"></script>
+        <!--====== Slick js ======-->
+        <script src="/static/js/tem/slick.min.js"></script>
+        <!--====== Counterup js ======-->
+        <script src="/static/js/tem/jquery.counterup.min.js"></script>
+        <!--====== Waypoints js ======-->
+        <script src="/static/js/tem/waypoints.min.js"></script>
+        <!--====== Magnific Popup js ======-->
+        <script src="/static/js/tem/jquery.magnific-popup.min.js"></script>
+        <!--====== Isotope js ======-->
+        <script src="/static/js/tem/isotope.pkgd.min.js"></script>
+        <!--====== Imagesloaded js ======-->
+        <script src="/static/js/tem/imagesloaded.pkgd.min.js"></script>
+        <!--====== WoW js ======-->
+        <script src="/static/js/tem/wow.min.js"></script>
+        <!--====== Main js ======-->
+        <script src="/static/js/tem/main.js"></script>
+        <script src="/static/js/tem/echarts.js"></script>
+        <script src="/static/js/tiaozhuan.js"></script>
+<script type="text/javascript">       
+(function () {
+    // 中间省略的数据  准备三项
+    var item = {
+        name: '',
+        value: 1200,
+        // 柱子颜色
+        itemStyle: {
+            color: '#254065'
+        },
+        // 鼠标经过柱子颜色
+        emphasis: {
+            itemStyle: {
+                color: '#254065'
+            }
+        },
+        // 工具提示隐藏
+        tooltip: {
+            extraCssText: 'opacity:0'
+        }
+    };
+    option = {
+        // 工具提示
+        tooltip: {
+            // 触发类型  经过轴触发axis  经过轴触发item
+            trigger: 'item',
+            // 轴触发提示才有效
+            axisPointer: {
+                // 默认为直线，可选为：'line' 线效果 | 'shadow' 阴影效果       
+                type: 'shadow'
+            }
+        },
+        // 图表边界控制
+        grid: {
+            // y2: 140,
+            // 距离 上右下左 的距离
+            left: '0',
+            right: '3%',
+            bottom: '3%',
+            top: '5%',
+            // 大小是否包含文本【类似于boxsizing】
+            containLabel: true,
+            //显示边框
+            show: true,
+            //边框颜色
+            borderColor: 'rgba(0, 240, 255, 0.3)'
+        },
+        // 控制x轴
+        xAxis: [
+            {
+                // 使用类目，必须有data属性
+                type: 'category',
+                // 使用 data 中的数据设为刻度文字
+                data: [{{pricen|safe}}],
+                // 刻度设置
+                axisTick: {
+                    // true意思：图形在刻度中间
+                    // false意思：图形在刻度之间
+                    alignWithLabel: false,
+                    show: false,
+
+                },
+                //文字
+                axisLabel: {
+                    color: '#4c9bfd',
+                    interval: 0,
+                    rotate: 40
+                }
+            }
+        ],
+        // 控制y轴
+        yAxis: [
+            {
+                // 使用数据的值设为刻度文字
+                type: 'value',
+                axisTick: {
+                    // true意思：图形在刻度中间
+                    // false意思：图形在刻度之间
+                    alignWithLabel: false,
+                    show: false
+                },
+                //文字
+                axisLabel: {
+                    color: '#4c9bfd'
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: 'rgba(0, 240, 255, 0.3)'
+                    }
+                },
+            }
+        ],
+        // 控制x轴
+        series: [
+
+            {
+                // series配置
+                // 颜色
+                itemStyle: {
+                    // 提供的工具函数生成渐变颜色
+                    color: new echarts.graphic.LinearGradient(
+                        // (x1,y2) 点到点 (x2,y2) 之间进行渐变
+                        0, 0, 0, 1,
+                        [
+                            { offset: 0, color: '#00fffb' }, // 0 起始颜色
+                            { offset: 1, color: '#0061ce' }  // 1 结束颜色
+                        ]
+                    )
+                },
+                // 图表数据名称
+                name: '',
+                // 图表类型
+                type: 'bar',
+                // 柱子宽度
+                barWidth: '70%',
+                // 数据
+                data: [{{price}}]
+            }
+        ]
+    };
+    var chartDom = document.getElementById('line');
+    var myechart = echarts.init(chartDom);
+    myechart.setOption(option);
+})();
+
+
+
+</script> 
+
+    </body>
+</html>

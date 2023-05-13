@@ -1,0 +1,9 @@
+Django==3.2.13
+Django-simpleui==2022.4.9
+elasticsearch7==7.15.0
+scikit-surprise==1.1.1
+django-extensions==3.2.1
+pymysql
+bert-serving-client 1.10.0
+bert-serving-server 1.10.0
+tensorflow             1.14.0

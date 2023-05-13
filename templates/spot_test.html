@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="Zh">
+    <head>
+        <!--====== Required meta tags ======-->
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="Pragma" content="no-cache" />
+        <link rel="stylesheet" href="/static/css/spot_map_test.css">
+        <script>
+            var five={{ five }};
+            var four={{ four }};
+            var three={{ three }};
+        </script>
+        <!--====== Title ======-->
+        <title>上海欢乐谷</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: burlywood;
+        }
+
+        .postdiv input {
+            cursor: pointer;
+            color: white;
+            font-size: 26px;
+            border: none;
+            border-radius: 0.4em;
+            width: 280px;
+            height: 45px;
+            background-color:#4CAF50;
+        }
+        #tu img{
+            max-width: 100%;
+            max-height:100%;
+            /*width:auto;
+            height: auto;*/
+        }
+        #title div{
+            font-size: 26px;
+            font-family: "宋体";
+            color: black;
+        }
+
+    </style>
+        <!--====== Favicon Icon ======-->
+        <link rel="stylesheet" type="text/css" href="/static/css/spot_test.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/ourself.css">
+
+        <!--link rel="shortcut icon" href="/static/images/logo/logo-1.png" type="image/png"-->
+        <!--====== Bootstrap css ======-->
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <!--====== Fontawesome css ======-->
+        <link rel="stylesheet" href="/static/fonts/fontawesome/css/all.min.css">
+        <!--====== Fontawesome css ======-->
+        <link rel="stylesheet" href="/static/fonts/flaticon/flaticon.css">
+        <!--====== Magnific Popup css ======-->
+        <link rel="stylesheet" href="/static/css/magnific-popup.css">
+        <!--====== Slick css ======-->
+        <link rel="stylesheet" href="/static/css/slick.css">
+        <!--====== Default css ======-->
+        <link rel="stylesheet" href="/static/css/default.css">
+        <!--====== Style css ======-->
+        <link rel="stylesheet" href="/static/css/style.css">
+
+        
+    </head>
+    <h3>上海欢乐谷</h3>
+    <body>
+        <!--====== Start Header ======-->
+        <div class="preloader">
+            <div class="lds-ellipsis">
+                <!--<span></span>-->
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!--====== End Header ======-->
+
+        <!--====== Start Header ======-->
+        <header class="header-area header-area-v1" style="background-color:#1b3255" >
+
+            <div class="header-navigation" >
+                <div class="container" >
+                    <div class="nav-container d-flex align-items-center justify-content-between">
+                        <!-- site logo -->
+
+                        <div class="nav-menu">
+                            <!-- Navbar Close Icon -->
+                            <div class="navbar-close">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <!-- nav-menu -->
+                            <nav class="main-menu">
+                                <ul>
+                                    <li class="menu-item" ><a href="/users/home" style="color: #FFFFFF">主页</a></li>
+                                    <li class="menu-item" ><a href="/users/spot_02" style="color: #FFFFFF">下一页</a></li>
+                                    <li class="menu-item" ><a href="http://sh.happyvalley.cn/" style="color: #FFFFFF">官网链接</a></li>
+                                    <!--li class="menu-item" ><p style="color: #FFFFFF">第1页共10页</p></li-->
+                                </ul>
+                            </nav>
+            
+                        </div>
+        
+
+                </div>
+                </div>
+            </div>
+        </header>
+   	<div style="padding-top:0px;height:10px;background-color:#f6f6f6;">
+		<div style="display:inline;width:5%;float:left;color:white;height:100%">&nbsp</div>
+        <div class="mainbody">
+            <div class="body2-1">
+
+                    <div class="body2-1-front" >年卡/套票价格</div>
+                        <div class="chart" >
+                            <div id="line" style="width:600px;height:300px">
+                            </div>
+                        </div>
+                    <div class="body2-1-front" >团体票价格</div>
+                         <div class="chart">
+                            <div id="line2" style="width:600px;height:300px">
+                            </div>
+                         </div>
+
+                    <div class="body2-1-front" >游客评分比例</div>
+                     <div class="point panel">
+                        <div class="inner">
+                            <div class="chart">
+                                 <div class="pie"></div>
+                            </div>
+                        </div>
+                     </div>
+
+                    <div class="body2-1-front" >子景点关系图</div>
+                     <div class="point panel">
+                        <div class="inner">
+                            <div class="map">
+
+                                <div class="chart">
+                                    <div class="geo" id="map1"></div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+
+        <div style="margin-top: 3cm">景点简介：</div>
+        <div>上海欢乐谷是适合全家游玩的大型主题乐园。年轻人可以体验刺激的过山车，小朋友可以畅游欢乐海洋、感受4D电影带来的视觉盛宴。还有多场精彩表演，玛雅狂欢节、国际魔术节等重大节日也经常在此举办。
+        </div>
+                <br>
+         <div >景点打分：</div>
+         <form method="POST" >
+            <select name="rating">
+            <option value=5 selected="selected">5</option>
+            <option value=4>4</option>
+            <option value=3 >3</option>
+            <option value=2>2</option>
+            <option value=1>1</option>
+            </select>
+            
+            <input type="submit">
+         </form>
+                  <!--div> <p> 推荐景点：{{ s0 }} {{ s1 }} {{ s2 }}</p> </div-->
+
+
+    </div>
+
+                <div class="body2-2">
+                    <div id="tu" style="width:380px;height:300px;float:left">
+                        <img src="/static/images/scenic_spot/happy_valley/01.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="body2-2">
+                    <div id="tu" style="width:380px;height:300px;float:left">
+                        <img src="/static/images/scenic_spot/spot_test.jpg" alt="">
+                    </div>
+                </div>
+
+                 <div class="body2-2">
+                    <div id="tu" style="width:380px;height:300px;float:left">
+                        <img src="/static/images/scenic_spot/happy_valley/02.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="body2-2">
+                    <div id="tu" style="width:380px;height:300px;float:left">
+                        <img src="/static/images/scenic_spot/happy_valley/03.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="body2-2">
+                    <div id="tu" style="width:380px;height:300px;float:left">
+                        <img src="/static/images/scenic_spot/happy_valley/04.jpg" alt="">
+                    </div>
+                </div>
+
+
+            </div>
+
+            </div>
+
+        <!--====== back-to-top ======-->
+        <a href="#" class="back-to-top" ><i class="fas fa-angle-up"></i></a>
+        <!--====== Jquery js ======-->
+        <script src="/static/js/vendor/modernizr-3.6.0.min.js"></script>
+        <script src="/static/js/vendor/jquery-1.12.4.min.js"></script>
+        <!--====== Bootstrap js ======-->
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/popper.min.js"></script>
+        <!--====== Slick js ======-->
+        <script src="/static/js/slick.min.js"></script>
+        <!--====== Counterup js ======-->
+        <script src="/static/js/jquery.counterup.min.js"></script>
+        <!--====== Waypoints js ======-->
+        <script src="/static/js/waypoints.min.js"></script>
+        <!--====== Magnific Popup js ======-->
+        <script src="/static/js/jquery.magnific-popup.min.js"></script>
+        <!--====== Isotope js ======-->
+        <script src="/static/js/isotope.pkgd.min.js"></script>
+        <!--====== Imagesloaded js ======-->
+        <script src="/static/js/imagesloaded.pkgd.min.js"></script>
+        <!--====== WoW js ======-->
+        <script src="/static/js/wow.min.js"></script>
+        <!--====== Main js ======-->
+        <script src="/static/js/main.js"></script>
+        <script src="/static/js/echarts.js"></script>
+        <script src="/static/js/xianshi.js"></script>
+        <script src="/static/js/spot_test_pie.js"></script>
+        <script src="/static/js/spot_map_test.js"></script>
+        {% if flag %}<script>window.alert("您的评分已提交！")</script>{% endif %}
+    </body>
+</html>

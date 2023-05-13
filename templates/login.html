@@ -1,0 +1,40 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/login.css' %}" rel="stylesheet"/>
+    <title>用户登录</title>
+  </head>
+  <style>
+    .register{
+    color:rgb(196, 30, 30);
+    font-size: 30px;
+}
+  </style>
+  <body>
+    <div class="container">
+            <div class="col">
+              <form class="form-login" action="/users/login/" method="post">
+                  <h2 class="text-center">个性化出行方案规划及可视化系统</h2>
+                  <div class="form-group">
+                    <label for="id_username">用户名：</label>
+                    <input type="text" name='username' class="form-control" id="id_username" placeholder="用户名" autofocus required>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_password">密码：</label>
+                    <input type="password" name='password' class="form-control" id="id_password" placeholder="密码" required>
+                  </div>
+                  <div>
+                  <a href="/users/register" class="register" >新用户注册</a>
+                  <button type="submit" class="btn btn-primary float-right">登录</button>
+                  </div>
+              </form>
+            </div>
+    </div> <!-- /container -->
+  </body>
+    {% if console_flag %}<script>window.alert("用户名或密码错误")</script>{% endif %}
+</html>

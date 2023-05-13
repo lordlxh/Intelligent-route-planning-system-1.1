@@ -1,0 +1,40 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/spot_recommendation_input.css' %}" rel="stylesheet"/>
+    <title景点推荐</title>
+  </head>
+
+  <body style="vertical-align:bottom;display:block">
+    <div class="container" >
+            <div class="col">
+              <form class="form-login"   method="post">
+                  <!--h5 class="text-center">请勾选您感兴趣类型（支持多选）</h5-->
+
+                  <div class="form-group">
+                      <label for="id_username" style="color:yellow;font-size: 20px">请选择您感兴趣的活动方案</label>
+                      <br>
+                      <input type="radio" name="type" value="1" ><p style="display:inline-block;color:red">红色团日/团建</p><br>
+                      <input type="radio" name="type" value="2" ><p style="display:inline-block;color:#33f611">自然观光</p><br>
+                      <input type="radio" name="type" value="3" ><p style="display:inline-block;color:yellow">人文博览</p><br>
+                      <input type="radio" name="type" value="4" ><p style="display:inline-block;color:#8800ff">拓展运动</p><br>
+                      <input type="radio" name="type" value="5" ><p style="display:inline-block;color:#00ffe1">青春游玩</p>
+
+                  </div>
+
+                  <div>
+                  <button type="submit" class="btn btn-primary float-right">提交</button>
+                  </div>
+
+              </form>
+            </div>
+
+
+    </div> <!-- /container -->
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode:'73674da9f8fe033be85592e5c836dc4c',
+        }
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>公共交通路线规划</title>
+    <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
+    <style type="text/css">
+    html,
+    body,
+    #container {
+      width: 100%;
+      height: 100%;
+    }
+    .weather{
+            width:5rem;
+            display:inline-block;
+            padding-left:0.5rem;
+        }
+        .sharp{
+            height: 1rem;
+            width: 1rem;
+            background-color: white;
+            transform: rotateZ(45deg);
+            box-shadow: 2px 2px 3px rgba(114, 124, 245, .5);
+            position: inherit;
+            margin-left: 10.5rem;
+            margin-top: -6px;
+        }
+    </style>
+    <style type="text/css">
+        #panel {
+            position: fixed;
+            background-color: white;
+            max-height: 90%;
+            overflow-y: auto;
+            top: 10px;
+            right: 10px;
+            width: 280px;
+        }
+         #panel1 {
+            position: fixed;
+            background-color: blue;
+            max-height: 90%;
+            overflow-y: auto;
+            top: 10px;
+            left: 60px;
+            width: 280px;
+        }
+        #panel .amap-call {
+            background-color: #009cf9;
+            border-top-left-radius: 4px;
+   	        border-top-right-radius: 4px;
+        }
+        #panel .amap-lib-transfer {
+	        border-bottom-left-radius: 4px;
+   	        border-bottom-right-radius: 4px;
+            overflow: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=d107b0b7cdceac6b30bc1242e3462678&plugin=AMap.Transfer"></script>
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<div id="panel"></div>
+<div id="panel1"></div>
+<script type="text/javascript">
+function disappear(){
+document.getElementById("w").style.display="none";
+}
+    var map = new AMap.Map("container", {
+        resizeEnable: true,
+        center: [121.436509,31.189712],
+        zoom: 13
+    });
+    AMap.plugin('AMap.Weather', function() {
+        var weather = new AMap.Weather();
+        //查询实时天气信息, 查询的城市到行政级别的城市，如朝阳区、杭州市
+        weather.getLive('上海市', function(err, data) {
+            if (!err) {
+                var str = [];
+                str.push('<h4 >实时天气' + '</h4><hr>');
+                str.push('<p>城市/区：' + data.city + '</p>');
+                str.push('<p>天气：' + data.weather + '</p>');
+                str.push('<p>温度：' + data.temperature + '℃</p>');
+                str.push('<p>风向：' + data.windDirection + '</p>');
+                str.push('<p>风力：' + data.windPower + ' 级</p>');
+                str.push('<p>空气湿度：' + data.humidity + '</p>');
+                str.push('<p>发布时间：' + data.reportTime + '</p>');
+                var marker = new AMap.Marker({map: map, position: map.getCenter()});
+                var infoWin = new AMap.InfoWindow({
+                    content: '<div class="info" style="position:inherit;margin-bottom:10;" onclick="disappear()" id="w">'+str.join('')+'</div><div class="sharp"></div>',
+                    isCustom:true,
+                    offset: new AMap.Pixel(0, -37)
+                });
+                infoWin.open(map, marker.getPosition());
+                marker.on('mouseover', function() {
+                    infoWin.open(map, marker.getPosition());
+                });
+            }
+        });
+
+    });
+    var transOptions = {
+        map: map,
+        city: '上海市',
+        panel: 'panel',
+        policy: AMap.TransferPolicy.LEAST_TIME //乘车策略
+    };
+    AMap.service(["AMap.PlaceSearch"], function() {
+        //构造地点查询类
+        var placeSearch = new AMap.PlaceSearch({
+            pageSize: 5, // 单页显示结果条数
+            pageIndex: 1, // 页码
+            city: "上海市", // 兴趣点城市
+            citylimit: true,  //是否强制限制在设置的城市内搜索
+            map: map, // 展现结果的地图实例
+            panel: "panel1", // 结果列表将在此容器中进行展示。
+            autoFitView: true // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
+        });
+        //关键字查询
+        placeSearch.search('{{ destination }}');
+    });
+    //构造公交换乘类
+    var transfer = new AMap.Transfer(transOptions);
+    //根据起、终点名称查询公交换乘路线
+    transfer.search([
+        {keyword: '{{start}}',city:'上海'},
+        {keyword: '{{destination1}}',city:'上海'},
+        {keyword: '{{destination2}}',city:'上海'},
+        {keyword: '{{destination3}}',city:'上海'}
+    ], function(status, result) {
+        // result即是对应的公交路线数据信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_TransferResult
+        if (status === 'complete') {
+            log.success('绘制公交路线完成')
+        } else {
+            log.error('公交路线数据查询失败' + result)
+        }
+    });
+
+</script>
+
+
+</body>
+</html>

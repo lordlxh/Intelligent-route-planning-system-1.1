@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>问答</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/que.css" />
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="/static/js/queflexible.js"></script>
+    <script src="/static/js/quechat.js"></script>
+</head>
+
+<body>
+
+    <header class="header">
+
+{#        <a class="back" href="javascript:history.back()"></a>#}
+       <h5 class="tit">问答助手</h5>
+        <div class="right"></div>
+    </header>
+    <div id="message">
+        <div class="reply">
+            <div class="msg">
+                <img src="/static/images/que/touxiangm.png" alt="" />
+                <span class="name">小助手</span>
+                <p>
+                    <i class="msg_input"></i>
+                    你好，请问你想知道哪些上海的景点信息
+
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div id="footer">
+
+        <form method="POST" action="/testing/que/">
+{#            <img src="/static/images/que/touxiangm.png" alt="" />#}
+            <img src="" alt="" />
+            <input class="my-input" type="text" id="messageBox" />
+            <p class="send" onclick="ajaxtest()">发送</p>
+        </form>
+    </div>
+    <script src="/static/js/quechat.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>
